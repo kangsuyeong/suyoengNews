@@ -3,10 +3,10 @@ const API_KEY = `db9569ed04774c3fb9c5a4d68a5aa546`;
 let newsList = [];
 
 const getLatestNews = async () => {
-  // const url = new URL(`https://fastidious-brioche-a7bfc5.netlify.app/top-headlines?country=kr`) 누나 API
-  const url = new URL(
-    `https://newsapi.org/v2/top-headlines?country=kr&apiKey=db9569ed04774c3fb9c5a4d68a5aa546`
-  );
+  const url = new URL(`https://fastidious-brioche-a7bfc5.netlify.app/top-headlines?country=kr`) //누나 API
+//   const url = new URL(
+//     `https://newsapi.org/v2/top-headlines?country=kr&apiKey=db9569ed04774c3fb9c5a4d68a5aa546`
+//   );
   const response = await fetch(url);
   const data = await response.json(); //json을 파일형식
   newsList = data.articles;
@@ -16,7 +16,6 @@ const getLatestNews = async () => {
 getLatestNews();
 
 const render = () => {
-  console.log(newsList[0].title)
   const newsHTML = newsList.map(
     (news) => `<div class="row news"> 
     <div class="col-lg-4">
