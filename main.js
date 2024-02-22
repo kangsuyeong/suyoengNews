@@ -1,25 +1,35 @@
+//1. 버튼들에 클릭이벤트주기
+//2. 카테고리별 뉴스 가져오기
+//3. 그 뉴스를 보여주기
+
 const API_KEY = `db9569ed04774c3fb9c5a4d68a5aa546`;
+const menus = document.querySelectorAll(".menus button")
+
 
 let tabs = document.querySelectorAll(".menus button")
 let newsList = [];
-let mode = ''
+let category = ''
+let keyword = ''
 
-tabs.forEach(menu=>
-  menu.addEventListener("click",(e)=>filter(e))
+menus.forEach(menu=>
+  menu.addEventListener("click",(event)=>getNewsByCategory(event))
 )
 
 const getLatestNews = async () => {
-  const url = new URL(`https://fastidious-brioche-a7bfc5.netlify.app/top-headlines?country=kr`); //누나 API
+  const url = new URL(`https://fastidious-brioche-a7bfc5.netlify.app/top-headlines?q=${keyword}&country=kr&category=${category}`); //누나 API
   // const url = new URL(
-  //   `https://newsapi.org/v2/top-headlines?country=us&category=${mode}&apiKey=${API_KEY}`
+  //   `https://newsapi.org/v2/top-headlines?q=${keyword}&country=kr&category=${category}&apiKey=${API_KEY}`
   // );
   const response = await fetch(url);
   const data = await response.json(); //json을 파일형식
   newsList = data.articles;
   console.log("news",newsList)
+  console.log(("category",category))
+  console.log("keyword",keyword)
   render()
 };
 getLatestNews();
+
 
 const render = () => {
   const newsHTML = newsList.map(
@@ -46,12 +56,38 @@ const render = () => {
   document.getElementById("news-board").innerHTML = newsHTML;
 };
 
-const filter = (e)=>{
-  console.log("click",e.target.id)
-  mode = e.target.id;
-  getLatestNews();
-}
+// const filter = (e)=>{
+//   console.log("click",e.target.id)
+//   mode = e.target.id;
+//   getLatestNews();
+// }
 
+// 기존코드
+// const getNewsByCategory= async (event)=>{
+//   const category = event.target.textContent.toLowerCase();
+//   console.log("category",category)
+//   const url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`)
+//   const response = await fetch(url);
+//   const data = await response.json(); //json을 파일형식
+//   console.log("Ddd",data)
+
+//   newsList = data.articles;
+//   render()
+// }
+
+const getNewsByCategory= async (event)=>{
+    keyword =''
+    category = event.target.textContent.toLowerCase();
+    console.log("category",category)
+    // const url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${API_KEY}`)
+    // const response = await fetch(url);
+    // const data = await response.json(); //json을 파일형식
+    // console.log("Ddd",data)
+  
+    // newsList = data.articles;
+    // render()
+    getLatestNews()
+  }
 
 
 const openNav = () => {
@@ -70,3 +106,18 @@ const openSearchBox = () => {
     inputArea.style.display = "inline";
   }
 };
+
+const searchNews = async ()=>{
+  category = '' //어디서 초기화해야할까?
+  keyword = document.getElementById("search-input").value
+  // console.log("keyword",keyword)
+  // const url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`)
+  // const response = await fetch(url);
+  // const data = await response.json(); //json을 파일형식
+  // console.log("Ddd",data)
+
+  // newsList = data.articles;
+  // render()
+  getLatestNews()
+}
+

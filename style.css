@@ -85,7 +85,7 @@
   }
   
   .menu-hide{
-    display : block;
+    display : flex;
   }
 
    @media screen and (max-width: 48rem) {
