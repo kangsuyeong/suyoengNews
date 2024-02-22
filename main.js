@@ -9,10 +9,10 @@ tabs.forEach(menu=>
 )
 
 const getLatestNews = async () => {
-  // const url = new URL(`https://fastidious-brioche-a7bfc5.netlify.app/top-headlines?country=kr`) //누나 API
-  const url = new URL(
-    `https://newsapi.org/v2/top-headlines?country=us&category=${mode}&apiKey=${API_KEY}`
-  );
+  const url = new URL(`https://fastidious-brioche-a7bfc5.netlify.app/top-headlines?country=kr`); //누나 API
+  // const url = new URL(
+  //   `https://newsapi.org/v2/top-headlines?country=us&category=${mode}&apiKey=${API_KEY}`
+  // );
   const response = await fetch(url);
   const data = await response.json(); //json을 파일형식
   newsList = data.articles;
@@ -22,8 +22,6 @@ const getLatestNews = async () => {
 getLatestNews();
 
 const render = () => {
-  console.log(newsList[0].publishedAt)
-  console.log(moment(`${newsList[0].publishedAt}`).fromNow())
   const newsHTML = newsList.map(
     (news) => 
     `<div class="row news"> 
