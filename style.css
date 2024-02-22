@@ -74,3 +74,29 @@
     background-color: beige;
     border-radius: 3px;
   }
+
+
+  .line{
+    border: 1px solid red;
+  }
+
+  .hide-icon{
+    display:none;
+  }
+  
+  .menu-hide{
+    display : block;
+  }
+
+   @media screen and (max-width: 48rem) {
+    .hide-icon{
+      display:inline;
+    }
+    .menu-hide{
+      display : none;
+    }
+  }
+
+  #input-area{
+    display : none;
+  }
