@@ -14,6 +14,7 @@
     flex-wrap: wrap;
     border-top: 1px solid #ebebeb;
     border-bottom: 4px double #000;
+    position: relative;
 }
 
 .menus button{
@@ -100,3 +101,42 @@
   #input-area{
     display : none;
   }
+
+  .side-search{
+    height:100px;
+  }
+
+  .side-menu-align{
+    display: flex;
+    align-items: center;
+    height : 30px;
+  }
+
+  .top-bar{
+    margin: 10px;
+    display : flex;
+    justify-content: space-between;
+  }
+
+  #search-input{
+    border : none;
+    border-bottom: 2px solid #ebebeb;
+  }
+  
+  .button-style{
+    background-color: white;
+    border : 2px solid #ebebeb;
+    border-radius: 20px;
+  }
+
+  #underLine{
+    width: 10px;
+    height : 20px;
+    background-color: black;
+    position: absolute;
+    left: 10px;
+    width: 59px;
+    top: 63px;
+    padding : 0px;
+    transition:0.5s
+}
