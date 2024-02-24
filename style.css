@@ -89,12 +89,19 @@
     display : flex;
   }
 
-   @media screen and (max-width: 48rem) {
+  @media screen and (max-width: 48rem) {
     .hide-icon{
       display:inline;
     }
     .menu-hide{
       display : none;
+    }
+    .head-line{
+      padding-bottom: 1em;
+      border-bottom: 1px solid #ebebeb;
+    }
+    .head-line svg{
+      width: 300px;
     }
   }
 
@@ -144,4 +151,8 @@
 .pagination-bar{
   display: flex;
   justify-content: center;
+}
+
+.img-size{
+  
 }

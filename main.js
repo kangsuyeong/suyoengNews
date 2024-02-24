@@ -89,7 +89,7 @@ const render = () => {
     const newsHTML = newsList.map(
       (news) => 
       `<div class="row news"> 
-      <div class="col-lg-4">
+      <div class="col-lg-4 text-center">
           <img class="news-img-size"src="${news.urlToImage}"alt="뉴스 이미지" class="news-img-size" onerror="imgError(this)">
       </div>
       <div class="col-lg-8">
@@ -163,37 +163,45 @@ if(lastPage>totalPages){
 
   let paginationHTML=''
   if(pageGroup!==1){ //첫번째 페이지
-    paginationHTML+= `<li class="page-item" onclick="MoveToPrePage(${lastPage})"><a class="page-link"><</a></li>`
+    paginationHTML+= `<li class="page-item" onclick="MoveToFirstPage()"><a class="page-link"><<</a></li>
+                      <li class="page-item" onclick="MoveToPrePage(${lastPage})"><a class="page-link"><</a></li>`
   }
   for(let i=firstPage;i<=lastPage;i++){
     paginationHTML+= `<li class="page-item ${i===page?"active":''}" onclick="MoveToPage(${i})"><a class="page-link">${i}</a></li>`
   }
 
-  if(pageGroup!==Math.ceil(totalPages/groupSize))
-    {paginationHTML+= `<li class="page-item" onclick="MoveToNextPage(${firstPage})"><a class="page-link">></a></li>`
+  if(pageGroup!==Math.ceil(totalPages/groupSize)){  //마지막페이지
+    paginationHTML+= `<li class="page-item" onclick="MoveToNextPage(${firstPage})"><a class="page-link">></a></li>
+                      <li class="page-item" onclick="MoveToLastPage(${totalPages})"><a class="page-link">>></a></li>`
   }
 
   document.querySelector(".pagination").innerHTML=paginationHTML
 }
 
 const MoveToPage=(pageNum)=>{
-  console.log("movetopage",pageNum)
   page = pageNum;
   getNews()
 }
 
 const MoveToNextPage=(firstPage)=>{
   page = firstPage + groupSize
-  console.log("page",page)
   getNews()
 }
 
 const MoveToPrePage=(lastPage)=>{
   page = lastPage - groupSize
-  console.log("page",page)
   getNews()
 }
 
+const MoveToFirstPage=()=>{
+  page = 1
+  getNews()
+}
+
+const MoveToLastPage=(totalPages)=>{
+  page = totalPages;
+  getNews()
+}
 
 
 
