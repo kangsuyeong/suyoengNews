@@ -68,6 +68,7 @@ const getNews = async ()=>{
 
 
 const getLatestNews = async () => {
+  page = 1 //페이지 초기화
   //url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`) //기존 API
   url = new URL(`https://fastidious-brioche-a7bfc5.netlify.app/top-headlines?&country=kr`); //누나 API
   getNews()
@@ -130,6 +131,7 @@ const getNewsByCategory= async (event)=>{
 }
 
 const searchNews = async ()=>{
+  page = 1 //페이지 초기화
   if(searchInput.value=="")
     {
         alert("검색어를 입력해주세요.");
