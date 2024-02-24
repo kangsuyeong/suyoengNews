@@ -140,3 +140,8 @@
     padding : 0px;
     transition:0.5s
 }
+
+.pagination-bar{
+  display: flex;
+  justify-content: center;
+}
