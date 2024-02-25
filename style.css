@@ -34,6 +34,7 @@
 
 .news{
     border-bottom: 2px solid black;
+    padding : 1em;
 }
 
 .side-menu {
@@ -155,4 +156,10 @@
 
 .img-size{
   
+}
+
+.news-img{
+  display : flex;
+  align-items: center;
+  justify-content: center;
 }
